@@ -1,19 +1,56 @@
+.address{
+  text-align: center;
+}
 .addressBar {
   width: 70vw;
   height: 50px;
   margin: 20px;
+  
 }
 
 .addressText{
   padding:20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
+  font-family: inherit;
+  font-weight: 300;
+  color: rgb(80, 80, 80);
+  font-size: 6vh
 }
 
-.continue {
-  background-color: rgb(112, 211, 115);
-  width: 400px;
-  height: 50px;
+button {
+  border-top: 0;
+  cursor: pointer;
 }
 
+.emerald {
+  margin-right: 10px;
+  width: 200px;
+  outline: none;
+  background: #08c991;
+  border-bottom:#08c991 3px solid;
+  border-left:#08c991 1px solid;
+  border-right:#08c991 1px solid;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
 
+.emerald:hover {
+  opacity: 0.8;
+}
+
+.emerald:active {
+  margin-right: 10px;
+  width: 200px;
+  background: #2BBB68;
+  border-bottom: #27ae60 1px solid;
+  border-left: #27ae60 1px solid;
+  border-right: #27ae60 1px solid;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  margin-top: 3px;
+}

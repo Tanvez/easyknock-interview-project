@@ -11,41 +11,45 @@ class AddressSearchBar extends Component {
     super(props);
     this.state = { 
       address: '', 
-      location:{}
+      location:{},
+      locationErr:false //used to load can't find address link
     };
   
       this.handleSubmit = this.handleSubmit.bind(this);
     }
  
   handleChange = address => {
+    this.setState({locationErr:false})
     this.setState({ address });
   };
  
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => {
-        const address = results[0].formatted_address
-         this.setState({address})
+        const address = results[0].formatted_address;
+         this.setState({address});
         return getLatLng(results[0])
       })
-      .then(latLng => this.setState({location:latLng}))//route it to gmaps to find location
-      .catch(error => console.error('Error', error));//TODO get it to output error and suggest cant find
+      .then(latLng => this.setState({location:latLng}))
+      .catch(error => console.error('Error', error));
   };
   handleSubmit(event){
     event.preventDefault();
-    const {location} = this.state 
-    if(location){
-      this.props.setAddress(location)
+    const {location, address} = this.state;
+    
+    if(address && location.lat && location.lng){
+      //dispatch actions to store
+      this.props.setAddress(address)
+      this.props.setLatlng(location)
     } else {
-      alert('Failed')
+      this.setState({locationErr:true});
     }
   }
  
   render() {
-    
     return (
-      <div> 
-      <h1 className="addressText">Enter your Address to see how much equity you can tap</h1>
+      <div className="address"> 
+      <h1 className="addressText">Enter your address to see how much equity you can tap</h1>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -53,7 +57,7 @@ class AddressSearchBar extends Component {
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <form onSubmit={this.handleSubmit}>
-            <label className="address">Home Address</label>
+            <label className="address">HOME ADDRESS</label>
               <input
                 {...getInputProps({
                   placeholder: 'Home Address',
@@ -81,12 +85,13 @@ class AddressSearchBar extends Component {
                     </div>
                   );
                 })}
-                <input className='continue' type="submit" value="Continue" />
-
+                
+                <button className="emerald" type="submit">Continue</button>
               </div>
             </form>
           )}
         </PlacesAutocomplete>
+        {this.state.locationErr? <div>can't find address</div>:''}  
       </div>
     );
   }
