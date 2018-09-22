@@ -20,7 +20,7 @@ class MapComponent extends Component {
 
   render() {
     const position = [this.state.lat, this.state.lng];
-    console.log('inside the map componet', this.props)
+    
     return (
       <LeafletMap center={position} zoom={this.state.zoom}>
         <TileLayer
@@ -29,7 +29,7 @@ class MapComponent extends Component {
         />
         <Marker position={position}>
           <Popup>
-            A pretty CSS3 popup. <br/> Easily customizable.
+            Property Address <br/>{this.state.address}
           </Popup>
         </Marker>
       </LeafletMap>
