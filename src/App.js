@@ -22,7 +22,7 @@ class App extends Component {
           </header>
             {<Switch>
               <Route exact path="/" exact render={()=><AddressSearchBar setAddress={setAddress} setLatlng={setLatlng}/>}/>
-              <Route exact path="/map" exact component={MapComponent} />
+              <Route exact path="/map" component={MapComponent} />
             </Switch>}
         </div>
       </Router>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom' // gives access to history.push
 import './style.css'
 
 import PlacesAutocomplete, {
@@ -28,25 +29,31 @@ class AddressSearchBar extends Component {
       .then(results => {
         const address = results[0].formatted_address;
          this.setState({address});
+         this.props.setAddress(address);
         return getLatLng(results[0])
       })
-      .then(latLng => this.setState({location:latLng}))
+      .then(latLng => {
+        this.setState({location:latLng});
+        this.props.setLatlng(latLng);
+      })
       .catch(error => console.error('Error', error));
   };
   handleSubmit(event){
     event.preventDefault();
     const {location, address} = this.state;
     
-    if(address && location.lat && location.lng){
-      //dispatch actions to store
-      this.props.setAddress(address)
-      this.props.setLatlng(location)
+    if(address && location.lat && location.lng ){
+     if(this.props.history.location!=='/map')
+      {
+          this.props.history.push("/map")
+      }
     } else {
       this.setState({locationErr:true});
     }
   }
  
   render() {
+    console.log()
     return (
       <div className="address"> 
       <h1 className="addressText">Enter your address to see how much equity you can tap</h1>
@@ -98,4 +105,4 @@ class AddressSearchBar extends Component {
 }
 
 
-export default AddressSearchBar;
+export default (withRouter)(AddressSearchBar);
