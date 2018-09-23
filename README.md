@@ -6,12 +6,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Installation
 note: might not work because of api key
-'''bash
+
+```bash
 $ git clone
 $ npm install
 
 $ npm start
-'''
+```
 
 Note: 
 - I use OpenStreetMap through [react-leaflet](https://www.npmjs.com/package/react-leaflet) to load the location because the GoogleMaps API had a watermark over their maps.
