@@ -20,11 +20,9 @@ class ValueForm extends Component {
 
   onSubmit=(event)=>{
     event.preventDefault();
-    console.log(this.props.setValTaxMort)
     this.props.setValTaxMortg(this.state);
   }
 
-  
   render() {
     return (
       <div className='page-format'>

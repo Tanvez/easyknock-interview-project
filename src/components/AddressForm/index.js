@@ -66,7 +66,6 @@ class AddressForm extends React.Component {
     );
   }
   render() {
-   
     return (
       <div className="row">
         <form className="form-container" onSubmit={this.handleSubmit}>

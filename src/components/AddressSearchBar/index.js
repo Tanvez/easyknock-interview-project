@@ -53,7 +53,6 @@ class AddressSearchBar extends Component {
   }
  
   render() {
-    console.log()
     return (
       <div className="address"> 
         <PlacesAutocomplete
