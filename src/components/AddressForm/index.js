@@ -1,60 +1,11 @@
-// import React, { Component } from 'react';
-// import Select from 'react-select';
-
-// const states = [
-//                 'Alabama','Alaska','American Samoa','Arizona',
-//                 'Arkansas','California','Colorado','Connecticut',
-//                 'Delaware','District of Columbia','Federated States of Micronesia',
-//                 'Florida','Georgia','Guam','Hawaii','Idaho','Illinois',
-//                 'Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine',
-//                 'Marshall Islands','Maryland','Massachusetts','Michigan',
-//                 'Minnesota','Mississippi','Missouri','Montana','Nebraska',
-//                 'Nevada','New Hampshire','New Jersey','New Mexico','New York',
-//                 'North Carolina','North Dakota','Northern Mariana Islands',
-//                 'Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico',
-//                 'Rhode Island','South Carolina','South Dakota','Tennessee','Texas',
-//                 'Utah','Vermont','Virgin Island','Virginia','Washington',
-//                 'West Virginia','Wisconsin','Wyoming'
-//               ].map((state)=>({lable:state,value:state}))
-
-// class AddressForm extends Component {
-  
-//    state= {
-//       street:'',
-//       city:'',
-//       selectedOption:null,
-//       zipcode:0,
-//       stateOptions:states
-//     }
-//     handleChange = (selectedOption) => {
-//       this.setState({ selectedOption });
-//       console.log(`Option selected:`, selectedOption);
-//     }
-
-//   render() {
-//     const {selectedOption, stateOptions} = this.state
-//     return (
-//       <div>
-//       <form>
-//       <label>STREET</label>
-//         <input placeholder="Street"></input>
-//       <label>CITY</label>  
-//         <input placeholder="City"></input>
-//         <label>ZIPCODE</label>
-//         <input placeholder="ZIPCODE"></input>
-//       </form>
-//       <Select  value={selectedOption}
-//       onChange={this.handleChange} options={stateOptions} />
-//       </div>
-//     );
-//   }
-// }
-
-// export default AddressForm
-
 import React from 'react';
-import Select from 'react-select';
 import './style.css';
+import Geocode from "react-geocode";
+
+Geocode.setApiKey("AIzaSyCqAHzHVigI9d30wnhWUwQk5XmA4WRjioY");
+ 
+// Enable or disable logs. Its optional.
+Geocode.enableDebug();
 
 const options = [
   'Alabama','Alaska','American Samoa','Arizona',
@@ -73,32 +24,61 @@ const options = [
 ].map((state)=>({label:state,value:state.toLowerCase()}))
 
 class AddressForm extends React.Component {
-  state = {
-    selectedOption: null,
-    street:'',
-    city:'',
-    zipcode:''
-
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedOption: '',
+      street:'',
+      city:'',
+      zipcode:'',
+      lat:0,
+      lng:0
+    }
+   this.selectHandleChange = this.selectHandleChange.bind(this);
+   this.onChange = this.onChange.bind(this)
+   this.handleSubmit = this.handleSubmit.bind(this) 
   }
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
+  
+  selectHandleChange = (event) => {
+    this.setState({ selectedOption:event.target.value })
+  }
+
+  onChange=(event)=>{
+    const {value, name} = event.target;
+    this.setState({[name]:value})
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const {street, city, selectedOption, zipcode} = this.state;
+    const address = street+','+city+','+selectedOption+','+zipcode;
+    Geocode.fromAddress(address).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        this.setState({lat, lng})
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
   render() {
-    const { selectedOption } = this.state;
-
+   
     return (
       <div className="row">
-        <form>
-          <label>STREET</label><input placeholder="Street"></input>
-          <label>CITY</label><input placeholder="City"></input>
-          <Select
-            className='selector'
-            value={selectedOption}
-            onChange={this.handleChange}
-            options={options}
-          />
-          <label>ZIPCODE</label><input placeholder="ZIPCODE"></input>
+        <form className="form-container" onSubmit={this.handleSubmit}>
+          <label>STREET</label><input onChange={this.onChange} name='street' placeholder="Street"></input>
+          <label>CITY</label><input onChange={this.onChange} name='city' placeholder="City"></input>
+          <div>
+          <label className="state-label">STATE</label>
+          <select  onChange={this.selectHandleChange}>
+            <option value='default'>Select a State</option>
+            {options.map((state, idx)=><option key={idx} value={state.value}>{state.label}</option>)}
+          </select>
+          <div className= 'zip-container'><label>ZIPCODE</label><input name="zipcode" onChange={this.onChange} placeholder="ZIPCODE"></input></div>
+          </div>
+          <button className="emerald" style={{marginLeft:0}} type="submit">Continue</button>
       </form>
     </div>
     );

@@ -15,7 +15,6 @@ class AddressSearchBar extends Component {
       location:{},
       locationErr:false //used to load can't find address link
     };
-  
       this.handleSubmit = this.handleSubmit.bind(this);
     }
  
@@ -38,6 +37,7 @@ class AddressSearchBar extends Component {
       })
       .catch(error => console.error('Error', error));
   };
+
   handleSubmit(event){
     event.preventDefault();
     const {location, address} = this.state;
