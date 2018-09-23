@@ -42,3 +42,12 @@
   vertical-align: middle;
   width: auto;
 }
+
+.addressText{
+  text-align: center;
+  padding:20px;
+  font-family: inherit;
+  font-weight: 300;
+  color: rgb(80, 80, 80);
+  font-size: 6vh
+}

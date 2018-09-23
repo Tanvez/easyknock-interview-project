@@ -1,5 +1,10 @@
+input, label {
+  display:block;
+  
+}
+
 .address{
-  text-align: center;
+ margin:20px;
 }
 .addressBar {
   width: 70vw;
@@ -8,17 +13,10 @@
   
 }
 
-.addressText{
-  padding:20px;
-  font-family: inherit;
-  font-weight: 300;
-  color: rgb(80, 80, 80);
-  font-size: 6vh
-}
-
 button {
   border-top: 0;
   cursor: pointer;
+  margin-left:20px;
 }
 
 .emerald {
@@ -34,7 +32,7 @@ button {
   color: white;
   padding: 10px;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .emerald:hover {

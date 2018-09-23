@@ -1,4 +1,12 @@
-.leaflet-container {
-  height: 400px;
-  width: 100%;
+
+@media screen and (min-width: 10em), screen and (min-height:5em){
+  .leaflet-container {
+  height: 300px;
+  width: 25rem;
+  display: inline-block
+  }
+}
+.map-container {
+  text-align: center;
+  height: 300px;
 }

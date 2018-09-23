@@ -56,7 +56,6 @@ class AddressSearchBar extends Component {
     console.log()
     return (
       <div className="address"> 
-      <h1 className="addressText">Enter your address to see how much equity you can tap</h1>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -98,7 +97,7 @@ class AddressSearchBar extends Component {
             </form>
           )}
         </PlacesAutocomplete>
-        {this.state.locationErr? <div>can't find address</div>:''}  
+        {this.state.locationErr? <div className="address">can't find address</div>:''}  
       </div>
     );
   }
