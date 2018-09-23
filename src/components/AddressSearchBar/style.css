@@ -22,7 +22,7 @@ button {
 
 .emerald {
   margin-right: 10px;
-  width: 200px;
+  width: 300px;
   outline: none;
   background: #08c991;
   border-bottom:#08c991 3px solid;
@@ -32,7 +32,7 @@ button {
   text-align: center;
   color: white;
   padding: 10px;
-  font-size: 12px;
+  font-size: 24px;
   font-weight: 400;
 }
 

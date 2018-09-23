@@ -7,7 +7,7 @@ import { Router, Route, Switch, Link } from 'react-router-dom'
 import {setAddress, setLatlng, setValTaxMortg} from './store'
 
 import history from './history'
-import {AddressSearchBar, MapComponent, AddressForm, ValueForm } from './components'
+import {AddressSearchBar, MapComponent, AddressForm, ValueForm, Slider } from './components'
 
 class App extends Component {
   render() {
@@ -27,6 +27,7 @@ class App extends Component {
               <Route exact path="/map" render={()=><div className='page-format'>{addressHeader}<MapComponent  setAddress={setAddress} setLatlng={setLatlng}/></div>} />
               <Route exact path="/addressform" render={()=><div className='page-format'>{addressHeader}<AddressForm setAddress={setAddress} setLatlng={setLatlng}/></div>}/>
               <Route exact path ="/valueform" render={()=><ValueForm setValTaxMortg={setValTaxMortg}/>}/>
+              <Route exact path ="/slider" component={Slider}/>
             </Switch>}
         </div>
       </Router>

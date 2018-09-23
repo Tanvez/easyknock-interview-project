@@ -28,16 +28,18 @@ class ValueForm extends Component {
   render() {
     return (
       <div className='page-format'>
-      <h1 className="addressText" style={{fontSize:'5vh'}} >Is your home information below accurate?</h1>
-      <form className="form-container" onSubmit={this.onSubmit}>
-          <label>VALUE OF HOME</label>
-          <NumberFormat placeholder='$' thousandSeparator={true} prefix={'$'} name='homeValue' onValueChange={this.onValueChange} required minLength="1" min='1'/>
-          <label>VALUE OF MORTGAGE</label>
-          <NumberFormat placeholder='$' thousandSeparator={true} prefix={'$'} name='mortgage' onValueChange={this.onValueChange} required minLength="1" min='1'/>
-          <label>ANNUAL TAXES</label>
-          <NumberFormat placeholder='$' thousandSeparator={true} prefix={'$'} name='taxes' onValueChange={this.onValueChange} required minLength="1" min='1'/>
-          <button className="emerald" style={{marginLeft:0}} type="submit">Continue</button>
-          </form>
+        <h1 className="addressText" style={{fontSize:'5vh'}} >Is your home information below accurate?</h1>
+        <form className="form-container" onSubmit={this.onSubmit}>
+            <label>VALUE OF HOME</label>
+            <NumberFormat placeholder='$' thousandSeparator={true} prefix={'$'} name='homeValue' onValueChange={this.onValueChange} required minLength="1" min='1'/>
+            <label>VALUE OF MORTGAGE</label>
+            <NumberFormat placeholder='$' thousandSeparator={true} prefix={'$'} name='mortgage' onValueChange={this.onValueChange} required minLength="1" min='1'/>
+            <label>ANNUAL TAXES</label>
+            <NumberFormat placeholder='$' thousandSeparator={true} prefix={'$'} name='taxes' onValueChange={this.onValueChange} required minLength="1" min='1'/>
+            <div style={{textAlign:'center', paddingTop:'10px'}}>
+              <button className="emerald" style={{display:'inline-block'}} type="submit">Continue</button>
+            </div>
+        </form>
       </div>
     );
   }

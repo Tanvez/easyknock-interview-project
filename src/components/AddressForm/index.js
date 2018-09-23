@@ -80,7 +80,9 @@ class AddressForm extends React.Component {
           </select>
           <div className= 'zip-container'><label>ZIPCODE</label><input name="zipcode" onChange={this.onChange} placeholder="ZIPCODE"></input></div>
           </div>
-          <button className="emerald" style={{marginLeft:0}} type="submit">Continue</button>
+          <div style={{textAlign:'center', paddingTop:'10px'}}>
+            <button className="emerald" style={{display:'inline-block'}} type="submit">Continue</button>
+          </div>
       </form>
     </div>
     );

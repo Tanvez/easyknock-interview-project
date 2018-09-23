@@ -91,8 +91,9 @@ class AddressSearchBar extends Component {
                     </div>
                   );
                 })}
-                
-                <button className="emerald" type="submit">Continue</button>
+                <div style={{textAlign:'center', paddingTop:'10px'}}>
+                <button className="emerald" style={{display:'inline-block'}} type="submit">Continue</button>
+                </div>
               </div>
             </form>
           )}
