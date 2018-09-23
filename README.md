@@ -3,6 +3,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## This is a project for EasyKnock internship
+
+## Installation
+note: might not work because of api key
+'''bash
+$ git clone
+$ npm install
+
+$ npm start
+'''
+
 Note: 
 - I use OpenStreetMap through [react-leaflet](https://www.npmjs.com/package/react-leaflet) to load the location because the GoogleMaps API had a watermark over their maps.
 - [rc-slider](https://www.npmjs.com/package/rc-slider) npm package to implement slider(WIP).
