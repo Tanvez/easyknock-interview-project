@@ -7,7 +7,7 @@ import { Router, Route, Switch, Link } from 'react-router-dom'
 import {setAddress, setLatlng, setValTaxMortg} from './store'
 
 import history from './history'
-import {AddressSearchBar, MapComponent, AddressForm, ValueForm, Slider } from './components'
+import {AddressSearchBar, MapComponent, AddressForm, ValueForm, Slider, Gmap } from './components'
 
 class App extends Component {
   render() {
@@ -21,13 +21,13 @@ class App extends Component {
             <img width="246" height="90" src="https://easyknock.com/wp-content/uploads/2018/08/eklogo.png" className="custom-logo" alt="EasyKnock" itemProp="logo" sizes="100vw"/>
           </Link>
           </header>
-         
             {<Switch>
               <Route exact path="/"  render={()=><div className='page-format'>{addressHeader}<AddressSearchBar setAddress={setAddress} setLatlng={setLatlng}/> </div>}/>
               <Route exact path="/map" render={()=><div className='page-format'>{addressHeader}<MapComponent  setAddress={setAddress} setLatlng={setLatlng}/></div>} />
               <Route exact path="/addressform" render={()=><div className='page-format'>{addressHeader}<AddressForm setAddress={setAddress} setLatlng={setLatlng}/></div>}/>
               <Route exact path ="/valueform" render={()=><ValueForm setValTaxMortg={setValTaxMortg}/>}/>
               <Route exact path ="/slider" component={Slider}/>
+              <Route exact path ="/gmap" render={()=><div className='page-format'>{addressHeader} <Gmap setAddress={setAddress} setLatlng={setLatlng} /></div>} />
             </Switch>}
         </div>
       </Router>
