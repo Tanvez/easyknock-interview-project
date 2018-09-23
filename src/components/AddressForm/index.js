@@ -57,6 +57,8 @@ class AddressForm extends React.Component {
       response => {
         const { lat, lng } = response.results[0].geometry.location;
         this.setState({lat, lng})
+        this.props.setAddress(address)
+        this.props.setLatlng({lat, lng})
       },
       error => {
         console.error(error);

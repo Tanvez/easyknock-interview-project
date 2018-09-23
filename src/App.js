@@ -24,7 +24,7 @@ class App extends Component {
             {<Switch>
               <Route exact path="/"  render={()=><AddressSearchBar setAddress={setAddress} setLatlng={setLatlng}/>}/>
               <Route exact path="/map" render={()=><MapComponent  setAddress={setAddress} setLatlng={setLatlng}/>} />
-              <Route exact path="/addressform" component ={AddressForm}/>
+              <Route exact path="/addressform" render={()=><AddressForm setAddress={setAddress} setLatlng={setLatlng} />}/>
             </Switch>}
         </div>
       </Router>
