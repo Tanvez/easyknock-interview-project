@@ -45,9 +45,17 @@
 
 .addressText{
   text-align: center;
-  padding:20px;
+  padding:15px;
   font-family: inherit;
   font-weight: 300;
   color: rgb(80, 80, 80);
-  font-size: 6vh
+  font-size: 4.5vh
+}
+
+@media only screen and (min-width: 800px){
+.page-format{
+  padding-top:4vh;
+  margin-left:25%; 
+  margin-right:25%;
+}
 }

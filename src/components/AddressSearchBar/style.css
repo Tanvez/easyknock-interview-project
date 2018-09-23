@@ -4,12 +4,12 @@ input, label {
 }
 
 .address{
- margin:20px;
+ margin-left:20px;
 }
 .addressBar {
-  width: 70vw;
+  width: 45vw;
   height: 50px;
-  margin: 20px;
+  margin-left: 20px;
   
 }
 
@@ -17,6 +17,7 @@ button {
   border-top: 0;
   cursor: pointer;
   margin-left:20px;
+  /* font-size: 20px; */
 }
 
 .emerald {
